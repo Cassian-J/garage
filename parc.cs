@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Garage;
 
 namespace CSharpDiscovery.Quest04
@@ -7,10 +6,40 @@ namespace CSharpDiscovery.Quest04
     public class Parc
     {
         private List<Car> listcars;
+        private List<string> brands;
+        private List<string> models;
 
         public Parc()
         {
             listcars = new List<Car>();
+            brands = new List<string>();
+            models = new List<string>();
+        }
+
+        public void AddBrand(string brand)
+        {
+            if (!brands.Contains(brand))
+            {
+                brands.Add(brand);
+                Console.WriteLine($"Marque ajoutée : {brand}");
+            }
+            else
+            {
+                Console.WriteLine($"La marque {brand} existe déjà.");
+            }
+        }
+
+        public void AddModel(string model)
+        {
+            if (!models.Contains(model))
+            {
+                models.Add(model);
+                Console.WriteLine($"Modèle ajouté : {model}");
+            }
+            else
+            {
+                Console.WriteLine($"Le modèle {model} existe déjà.");
+            }
         }
 
         public void AddCars(string brand, string model, int id, bool isRented = false, int year = 0)
@@ -32,6 +61,36 @@ namespace CSharpDiscovery.Quest04
             foreach (var car in listcars)
             {
                 Console.WriteLine(car);
+            }
+        }
+
+        public void ListBrands()
+        {
+            if (brands.Count == 0)
+            {
+                Console.WriteLine("Aucune marque ajoutée.");
+                return;
+            }
+
+            Console.WriteLine("Liste des marques :");
+            foreach (var brand in brands)
+            {
+                Console.WriteLine($"- {brand}");
+            }
+        }
+
+        public void ListModels()
+        {
+            if (models.Count == 0)
+            {
+                Console.WriteLine("Aucun modèle ajouté.");
+                return;
+            }
+
+            Console.WriteLine("Liste des modèles :");
+            foreach (var model in models)
+            {
+                Console.WriteLine($"- {model}");
             }
         }
 
