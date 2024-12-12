@@ -7,9 +7,13 @@ namespace CSharpDiscovery.Quest04
         static void Main(string[] args)
         {
             Parc parc = new Parc();
-            parc.AddCars("Toyota", "Corolla", 1, true, 2020);
+            parc.AddCars("Toyota", "Corolla", 1, false, 2020);
             parc.ListCars();
+
             parc.LouerVoiture(1);
+
+            parc.ArreterLocation(1);
+
         }
     }
 }

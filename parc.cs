@@ -34,7 +34,7 @@ namespace CSharpDiscovery.Quest04
                 Console.WriteLine(car);
             }
         }
-        
+
         public void LouerVoiture(int id)
         {
             foreach (var car in listcars)
@@ -49,6 +49,27 @@ namespace CSharpDiscovery.Quest04
                     {
                         car.IsRented = true;
                         Console.WriteLine($"La voiture {car.Brand} {car.Model} a été louée.");
+                    }
+                    return;
+                }
+            }
+            Console.WriteLine("Aucune voiture avec cet ID.");
+        }
+
+        public void ArreterLocation(int id)
+        {
+            foreach (var car in listcars)
+            {
+                if (car.Id == id)
+                {
+                    if (!car.IsRented)
+                    {
+                        Console.WriteLine("La voiture n'est pas louée.");
+                    }
+                    else
+                    {
+                        car.IsRented = false;
+                        Console.WriteLine($"La voiture {car.Brand} {car.Model} a été rendue.");
                     }
                     return;
                 }
