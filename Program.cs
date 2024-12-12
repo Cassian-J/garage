@@ -1,6 +1,7 @@
 ﻿using System;
+using Garage;
 
-namespace CSharpDiscovery.Quest04
+namespace Garage
 {
     class Program
     {

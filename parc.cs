@@ -1,7 +1,7 @@
 using System;
 using Garage;
 
-namespace CSharpDiscovery.Quest04
+namespace Garage
 {
     public class Parc
     {
@@ -42,7 +42,7 @@ namespace CSharpDiscovery.Quest04
             }
         }
 
-        public void AddCars(string brand, string model, int id, bool isRented = false, int year = 0)
+        public void AddCars(string brand, string model, int id, int year = 0, bool isRented = false)
         {
             Car car = new Car(brand, model, year, id, isRented);
             listcars.Add(car);
