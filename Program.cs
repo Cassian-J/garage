@@ -1,13 +1,14 @@
 ﻿using System;
+using Garage;
 
-namespace CSharpDiscovery.Quest04
+namespace Garage
 {
     class Program
     {
         static void Main(string[] args)
         {
             Parc parc = new Parc();
-            parc.AddCars("Toyota", "Corolla", 1, false, 2020);
+            parc.AddCars("Toyota", "Corolla", 1, 2020);
             parc.ListCars();
 
             parc.LouerVoiture(1);
