@@ -1,6 +1,6 @@
 using System;
 
-namespace CSharpDiscovery.Quest04
+namespace Garage
 {
     public class Car 
     {
@@ -10,16 +10,8 @@ namespace CSharpDiscovery.Quest04
 
         public int Year { get; set; }
         public bool Statue { get; set; }
-        public Car()
-        {
-            Statue = false;
-            Year = 0;
-            Id = 0;
-            Brand = "Unknown";
-            Model = "Unknown";
-                
-        }
-        public Car(string model,string brand, int year, bool statue, int id)
+        
+        public Car(string brand,string model, int year,int id, bool statue=false)
         {
             Statue = statue;
             Year = year;
