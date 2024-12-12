@@ -9,11 +9,11 @@ namespace Garage
         public int Id { get; set; }
 
         public int Year { get; set; }
-        public bool Statue { get; set; }
+        public bool IsRented { get; set; }
         
-        public Car(string brand,string model, int year,int id, bool statue=false)
+        public Car(string brand,string model, int year,int id, bool isrented=false)
         {
-            Statue = statue;
+            IsRented = isrented;
             Year = year;
             Id = id;
             Brand = brand;
@@ -21,7 +21,7 @@ namespace Garage
         }
         public override string ToString()
         {
-            return $"Brand: {Brand},\nModel: {Model},\nYear: {Year},\nIs rentable: {Statue}";
+            return $"Brand: {Brand},\nModel: {Model},\nYear: {Year},\nIs rentable: {IsRented}";
         }
     }
 }
