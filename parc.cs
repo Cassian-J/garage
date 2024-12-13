@@ -7,19 +7,20 @@ namespace Garage
     {
         private List<Car> listcars;
         private List<string> brands;
-        private List<string> models;
+        private Dictionary<string, List<string>> models;
 
         public Parc()
         {
             listcars = new List<Car>();
             brands = new List<string>();
-            models = new List<string>();
+            models = new Dictionary<string, List<string>>();
         }
 
         public void AddBrand(string brand)
         {
             if (!brands.Contains(brand))
             {
+                models[brand] = new List<string>();
                 brands.Add(brand);
                 Console.WriteLine($"Marque ajoutée : {brand}");
             }
@@ -29,11 +30,11 @@ namespace Garage
             }
         }
 
-        public void AddModel(string model)
+        public void AddModel(string model, string brandId)
         {
-            if (!models.Contains(model))
+            if (!models[brandId].Contains(model))
             {
-                models.Add(model);
+                models[brandId].Add(model);
                 Console.WriteLine($"Modèle ajouté : {model}");
             }
             else
@@ -42,11 +43,16 @@ namespace Garage
             }
         }
 
-        public void AddCars(string brand, string model, int id, int year = 0, bool isRented = false)
+        public void AddCars(string brand, string model, int year = 0, bool isRented = false)
         {
-            Car car = new Car(brand, model, year, id, isRented);
-            listcars.Add(car);
-            Console.WriteLine($"Voiture ajoutée : {brand} {model} (ID: {id}, Année: {year})");
+            if (models[brand].Contains(model)){
+                Car car = new Car(brand, model, year, listcars.Count+1, isRented);
+                listcars.Add(car);
+                Console.WriteLine($"Voiture ajoutée : {brand} {model} (ID: {listcars.Count+1}, Année: {year})");
+            }else{
+                Console.WriteLine($"la marque {brand} ne possède pas de modèle {model}");
+            }
+            
         }
 
         public void ListCars()
@@ -88,9 +94,11 @@ namespace Garage
             }
 
             Console.WriteLine("Liste des modèles :");
-            foreach (var model in models)
+            foreach (var brand in models)
             {
-                Console.WriteLine($"- {model}");
+                foreach (var model in brands){
+                    Console.WriteLine($"-{brand} : {model}");
+                }
             }
         }
 
