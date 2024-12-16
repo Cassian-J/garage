@@ -73,11 +73,14 @@ namespace Garage
                 Console.WriteLine("Aucune voiture dans le parc.");
                 return;
             }
+            Console.WriteLine("{0,-5} {1,-15} {2,-21} {3,-20} {4,-10}", "ID", "Marque", "Modèle", "Année de création", "Louable");
+            Console.WriteLine(new string('-', 72));
 
-            Console.WriteLine("Liste des voitures :");
             foreach (var car in listcars)
             {
-                Console.WriteLine(car);
+                string isRented = car.IsRented ? "OUI" : "NON";
+                Console.WriteLine("{0,-5} {1,-15} {2,-21} {3,-20} {4,-10}",
+                                car.Id, car.Brand, car.Model, car.Year, isRented);
             }
         }
 
@@ -89,10 +92,11 @@ namespace Garage
                 return;
             }
 
-            Console.WriteLine("Liste des marques :");
+            Console.WriteLine("{0,-15}", "Marque");
+            Console.WriteLine(new string('-', 15));
             foreach (var brand in models)
             {
-                Console.WriteLine($"- {brand.Key}");
+                Console.WriteLine("{0,-15}",brand.Key);
             }
         }
 
@@ -104,13 +108,14 @@ namespace Garage
                 return;
             }
 
-            Console.WriteLine("Liste des modèles :");
+            Console.WriteLine("{0,-15} {1,-21}", "Marque","Modèle");
+            Console.WriteLine(new string('-', 37));
             foreach (var brand in models)
             {
                 string brandName = brand.Key;
                 List<string> brandModels = brand.Value; 
                 foreach (var model in brandModels){
-                    Console.WriteLine($"-{brandName} : {model}");
+                    Console.WriteLine("{0,-15} {1,-21}", brandName ,model);
                 }
             }
         }
