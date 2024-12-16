@@ -1,7 +1,4 @@
-﻿using System;
-using Garage;
-
-namespace Garage
+﻿namespace Garage
 {
     class Program
     {

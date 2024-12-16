@@ -1,27 +1,31 @@
-using System;
-using Garage;
-
 namespace Garage
 {
     public class Parc
     {
         private List<Car> listcars;
-        private List<string> brands;
         private Dictionary<string, List<string>> models;
 
         public Parc()
         {
             listcars = new List<Car>();
-            brands = new List<string>();
             models = new Dictionary<string, List<string>>();
         }
-
+        public void DataGetter((List<Car> ListCars, Dictionary<string, List<string>> Models) Data)
+        {
+                listcars = Data.ListCars;
+                models = Data.Models;
+        }
+        public List<Car> GetList() {
+            return listcars;
+        }
+        public Dictionary<string, List<string>> GetDictionnary() {
+            return models;
+        }
         public void AddBrand(string brand)
         {
-            if (!brands.Contains(brand))
+            if (!models.ContainsKey(brand))
             {
                 models[brand] = new List<string>();
-                brands.Add(brand);
                 Console.WriteLine($"Marque ajoutée : {brand}");
             }
             else
@@ -32,14 +36,21 @@ namespace Garage
 
         public void AddModel(string model, string brandId)
         {
-            if (!models[brandId].Contains(model))
+            if (models.ContainsKey(brandId))
             {
-                models[brandId].Add(model);
-                Console.WriteLine($"Modèle ajouté : {model}");
+                if (!models[brandId].Contains(model))
+                {
+                    models[brandId].Add(model);
+                    Console.WriteLine($"Modèle ajouté : {model}");
+                }
+                else
+                {
+                    Console.WriteLine($"Le modèle {model} existe déjà.");
+                }
             }
-            else
+            else 
             {
-                Console.WriteLine($"Le modèle {model} existe déjà.");
+                Console.WriteLine($"la marque {brandId} n'existe pas");
             }
         }
 
@@ -72,16 +83,16 @@ namespace Garage
 
         public void ListBrands()
         {
-            if (brands.Count == 0)
+            if (models.Count == 0)
             {
                 Console.WriteLine("Aucune marque ajoutée.");
                 return;
             }
 
             Console.WriteLine("Liste des marques :");
-            foreach (var brand in brands)
+            foreach (var brand in models)
             {
-                Console.WriteLine($"- {brand}");
+                Console.WriteLine($"- {brand.Key}");
             }
         }
 
@@ -96,8 +107,10 @@ namespace Garage
             Console.WriteLine("Liste des modèles :");
             foreach (var brand in models)
             {
-                foreach (var model in brands){
-                    Console.WriteLine($"-{brand} : {model}");
+                string brandName = brand.Key;
+                List<string> brandModels = brand.Value; 
+                foreach (var model in brandModels){
+                    Console.WriteLine($"-{brandName} : {model}");
                 }
             }
         }

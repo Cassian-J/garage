@@ -1,32 +1,20 @@
-using System;
-using Garage;
-
 namespace Garage
 {
     public class Menu
         {
         Parc parc = new Parc();
+        CarContainer carContainer= new CarContainer();
 
         public Menu(){
-            parc.AddBrand("Toyota");
-            parc.AddBrand("Ford");
-            parc.AddBrand("Honda");
-            parc.AddBrand("Tesla");
-
-            parc.AddModel("Corolla","Toyota");
-            parc.AddModel("Mustang","Ford");
-            parc.AddModel("Civic","Honda");
-            parc.AddModel("Model S","Tesla");
-
-            parc.AddCars("Toyota", "Corolla", 2020);
-            parc.AddCars("Ford", "Mustang", 2021);
-            parc.AddCars("Honda", "Civic", 2022);
-            parc.AddCars("Tesla", "Model S", 2023);
+            carContainer.LoadFromFile("save.txt");
+            parc.DataGetter(carContainer.LoadFromFile("save.txt"));
         }
         public void Print()
             {
             
             while(true){
+                carContainer.DataSeter(parc.GetList(),parc.GetDictionnary());
+                carContainer.SaveToFile("save.txt");
                 Console.Clear();
                 Console.WriteLine("[1] ajouter une voiture");
                 Console.WriteLine("[2] ajouter une marque");

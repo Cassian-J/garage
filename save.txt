@@ -1,0 +1,69 @@
+[Cars]
+Toyota,Corolla,2020,1,False
+Toyota,Land Cruiser,2021,2,True
+Toyota,Prado,2022,3,False
+Ford,Mustang,2021,4,True
+Ford,F-150,2022,5,False
+Ford,Explorer,2023,6,True
+Honda,Civic,2020,7,False
+Honda,Accord,2021,8,True
+Honda,Fit,2022,9,False
+Tesla,Model S,2020,10,True
+Tesla,Model X,2021,11,False
+Tesla,Model 3,2022,12,True
+Chevrolet,Malibu,2020,13,False
+Chevrolet,Silverado,2021,14,True
+Chevrolet,Equinox,2022,15,False
+BMW,X3,2020,16,True
+BMW,X5,2021,17,False
+BMW,Z4,2022,18,True
+Audi,A4,2020,19,False
+Audi,Q5,2021,20,True
+Audi,R8,2022,21,False
+Mercedes-Benz,C-Class,2020,22,True
+Mercedes-Benz,E-Class,2021,23,False
+Mercedes-Benz,S-Class,2022,24,True
+Nissan,Altima,2020,25,False
+Nissan,Maxima,2021,26,True
+Nissan,370Z,2022,27,False
+Hyundai,Sonata,2020,28,True
+Hyundai,Tucson,2021,29,False
+Hyundai,Kona,2022,30,True
+Kia,Soul,2020,31,False
+Kia,Optima,2021,32,True
+Kia,Sorento,2022,33,False
+Volkswagen,Passat,2020,34,True
+Volkswagen,Tiguan,2021,35,False
+Volkswagen,Jetta,2022,36,True
+Subaru,Outback,2020,37,False
+Subaru,Forester,2021,38,True
+Subaru,Crosstrek,2022,39,False
+Mazda,CX-5,2020,40,True
+Mazda,MX-5 Miata,2021,41,False
+Mazda,3,2022,42,True
+Porsche,911,2020,43,False
+Porsche,Cayenne,2021,44,True
+Porsche,Macan,2022,45,False
+Jaguar,F-Type,2020,46,True
+Jaguar,XE,2021,47,False
+Jaguar,F-Pace,2022,48,True
+Land Rover,Range Rover,2020,49,False
+Land Rover,Discovery,2021,50,True
+[Models]
+Toyota:Sequoia, Tacoma, Tundra, Sienna, Prius
+Ford:Edge, Bronco, Ranger, Expedition, EcoSport
+Honda:Insight, Passport, Ridgeline, Odyssey, Clarity
+Tesla:Roadster,Semi,Truck,RV,Van
+Chevrolet:Blazer,Equinox,Impala,Traverse,Corvette
+BMW:2 Series,5 Series,7 Series,M3,320i
+Audi:S5,A7,A8,Q3,A3
+Mercedes-Benz:A-Class,B-Class,CLA,GLA,GLS
+Nissan:Leaf,Xterra,GT-R,Z,Frontier
+Hyundai:Ioniq,Nexo,Kona,Palace,Veloster
+Kia:Seltos,Rio,Picanto,Carens,Niro
+Volkswagen:ID.4,ID.3,Passat CC,Transporter,Sharan
+Subaru:BRZ,Legacy,Outback,Impreza,Forester
+Mazda:CX-30,MX-3,MX-6,Capella,626
+Porsche:718 Cayman,Panamera,Macan,911 Carrera,Taycan
+Jaguar:F-Pace,Jaguar XJ,Jaguar XE,Jaguar XF
+Land Rover:Discovery Sport,Range Rover Velar,Land Rover Defender,Land Rover Freelander
