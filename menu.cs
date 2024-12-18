@@ -27,19 +27,34 @@ namespace Garage
                     switch (input){
                         case 1:
                             while(true){
-                                Console.Clear();
-                                Console.WriteLine("quelle est la marque? (ecrivez \"exit\" si vous ne voulez plus ajouté de voiture)");
+                                Console.WriteLine("quelle est la marque? (faites [entrée] pour sortir de cette partie)");
                                 string? brand = Console.ReadLine();
-                                if (brand == "exit"){
+                                if (string.IsNullOrWhiteSpace(brand)){
+                                    Console.Clear();
                                     break;
                                 }
+                                else if (!parc.GetDictionnary().ContainsKey(brand))
+                                {
+                                    Console.WriteLine("Cette marque n'est pas dans la base de donnée.");
+                                }
                                 else if (!string.IsNullOrWhiteSpace(brand)){
-                                    Console.WriteLine("quelle le modèle de la voiture??");
+                                    Console.WriteLine("quelle le modèle de la voiture? (faites [entrée] pour sortir de cette partie)");
                                     string? model = Console.ReadLine();
+                                    if (string.IsNullOrWhiteSpace(model)){
+                                        Console.Clear();
+                                        break;
+                                    }
+                                    else if (!parc.GetDictionnary()[brand].Contains(model))
+                                    {
+                                        Console.WriteLine("Ce modèle n'est pas dans la base de donnée.");
+                                    }
                                     if (!string.IsNullOrWhiteSpace(model)){
-                                        Console.WriteLine("en quelle année a t elle été créé?");
+                                        Console.WriteLine("en quelle année a t elle été créé? (faites [entrée] pour sortir de cette partie)");
                                         if(int.TryParse(Console.ReadLine(),out int year)){
                                             parc.AddCars(brand,model, year);
+                                            break;
+                                        }else{
+                                            Console.Clear();
                                             break;
                                         }
                                     }
