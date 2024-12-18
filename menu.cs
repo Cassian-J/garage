@@ -68,14 +68,14 @@ namespace Garage
                             Console.Clear();
                             Console.WriteLine("quel est l'id de la voiture?");
                             if(int.TryParse(Console.ReadLine(),out int idRentCar)){
-                                parc.LouerVoiture(idRentCar);
+                                parc.rentCar(idRentCar);
                             }
                             break;
                         case 3:
                             Console.Clear();
                             Console.WriteLine("quel est l'id de la voiture?");
                             if(int.TryParse(Console.ReadLine(),out int idRetedCar)){
-                                parc.ArreterLocation(idRetedCar);
+                                parc.returnCar(idRetedCar);
                             }
                             break;
                         case 4:

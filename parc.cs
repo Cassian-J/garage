@@ -88,7 +88,7 @@ namespace Garage
             }
         }
 
-        public void LouerVoiture(int id)
+        public void rentCar(int id)
         {
             foreach (var car in listcars)
             {
@@ -109,7 +109,7 @@ namespace Garage
             Console.WriteLine("Aucune voiture avec cet ID.");
         }
 
-        public void ArreterLocation(int id)
+        public void returnCar(int id)
         {
             foreach (var car in listcars)
             {
