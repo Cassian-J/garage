@@ -49,6 +49,7 @@ Jaguar,XE,2021,47,False
 Jaguar,F-Pace,2022,48,True
 Land Rover,Range Rover,2020,49,False
 Land Rover,Discovery,2021,50,True
+Jaguar,Jaguar XJ,1999,51,False
 [Models]
 Toyota:Sequoia, Tacoma, Tundra, Sienna, Prius
 Ford:Edge, Bronco, Ranger, Expedition, EcoSport

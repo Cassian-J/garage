@@ -29,8 +29,8 @@ namespace Garage
                             Console.Clear();
                             while(true){
                                 Console.WriteLine("quelle est la marque? (faites [entrée] pour sortir de cette partie)");
-                                Console.Clear();
                                 string? brand = Console.ReadLine();
+                                Console.Clear();
                                 if (string.IsNullOrWhiteSpace(brand)){
                                     break;
                                 }
@@ -49,7 +49,7 @@ namespace Garage
                                     {
                                         Console.WriteLine("Ce modèle n'est pas dans la base de donnée.");
                                     }
-                                    if (!string.IsNullOrWhiteSpace(model)){
+                                    else if (!string.IsNullOrWhiteSpace(model)){
                                         Console.WriteLine("en quelle année a t elle été créé? (faites [entrée] pour sortir de cette partie)");
                                         if(int.TryParse(Console.ReadLine(),out int year)){
                                             parc.AddCars(brand,model, year);
