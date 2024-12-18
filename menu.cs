@@ -26,11 +26,12 @@ namespace Garage
                 if(int.TryParse(Console.ReadLine(),out int input)){
                     switch (input){
                         case 1:
+                            Console.Clear();
                             while(true){
                                 Console.WriteLine("quelle est la marque? (faites [entrée] pour sortir de cette partie)");
+                                Console.Clear();
                                 string? brand = Console.ReadLine();
                                 if (string.IsNullOrWhiteSpace(brand)){
-                                    Console.Clear();
                                     break;
                                 }
                                 else if (!parc.GetDictionnary().ContainsKey(brand))
@@ -40,8 +41,8 @@ namespace Garage
                                 else if (!string.IsNullOrWhiteSpace(brand)){
                                     Console.WriteLine("quelle le modèle de la voiture? (faites [entrée] pour sortir de cette partie)");
                                     string? model = Console.ReadLine();
+                                    Console.Clear();
                                     if (string.IsNullOrWhiteSpace(model)){
-                                        Console.Clear();
                                         break;
                                     }
                                     else if (!parc.GetDictionnary()[brand].Contains(model))
@@ -52,7 +53,7 @@ namespace Garage
                                         Console.WriteLine("en quelle année a t elle été créé? (faites [entrée] pour sortir de cette partie)");
                                         if(int.TryParse(Console.ReadLine(),out int year)){
                                             parc.AddCars(brand,model, year);
-                                            break;
+                                            Console.Clear();
                                         }else{
                                             Console.Clear();
                                             break;
