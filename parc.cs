@@ -21,39 +21,7 @@ namespace Garage
         public Dictionary<string, List<string>> GetDictionnary() {
             return models;
         }
-        public void AddBrand(string brand)
-        {
-            if (!models.ContainsKey(brand))
-            {
-                models[brand] = new List<string>();
-                Console.WriteLine($"Marque ajoutée : {brand}");
-            }
-            else
-            {
-                Console.WriteLine($"La marque {brand} existe déjà.");
-            }
-        }
-
-        public void AddModel(string model, string brandId)
-        {
-            if (models.ContainsKey(brandId))
-            {
-                if (!models[brandId].Contains(model))
-                {
-                    models[brandId].Add(model);
-                    Console.WriteLine($"Modèle ajouté : {model}");
-                }
-                else
-                {
-                    Console.WriteLine($"Le modèle {model} existe déjà.");
-                }
-            }
-            else 
-            {
-                Console.WriteLine($"la marque {brandId} n'existe pas");
-            }
-        }
-
+    
         public void AddCars(string brand, string model, int year = 0, bool isRented = false)
         {
             if (models[brand].Contains(model)){

@@ -17,14 +17,12 @@ namespace Garage
                 carContainer.SaveToFile("save.txt");
                 Console.Clear();
                 Console.WriteLine("[1] ajouter une voiture");
-                Console.WriteLine("[2] ajouter une marque");
-                Console.WriteLine("[3] ajouter un modèle");
-                Console.WriteLine("[4] louer un voiture");
-                Console.WriteLine("[5] rendre une voiture");
-                Console.WriteLine("[6] lister les voitures");
-                Console.WriteLine("[7] lister les marques");
-                Console.WriteLine("[8] lister les modèles");
-                Console.WriteLine("[9] quitter");
+                Console.WriteLine("[2] louer un voiture");
+                Console.WriteLine("[3] rendre une voiture");
+                Console.WriteLine("[4] lister les voitures");
+                Console.WriteLine("[5] lister les marques");
+                Console.WriteLine("[6] lister les modèles");
+                Console.WriteLine("[7] quitter");
                 if(int.TryParse(Console.ReadLine(),out int input)){
                     switch (input){
                         case 1:
@@ -52,49 +50,29 @@ namespace Garage
                             break;
                         case 2:
                             Console.Clear();
-                            Console.WriteLine("quelle est la marque?");
-                            string? newBrand = Console.ReadLine();
-                            if (!string.IsNullOrWhiteSpace(newBrand)){
-                                parc.AddBrand(newBrand);
-                                }
-                            break;
-                        case 3:
-                            Console.Clear();
-                            Console.WriteLine("quelle est la marque de la voiture que vous voulez ajouter?");
-                            string? brandId = Console.ReadLine();
-                            if (!string.IsNullOrWhiteSpace(brandId)){
-                                Console.WriteLine("quelest le modèle");
-                                string? newModel = Console.ReadLine();
-                                if (!string.IsNullOrWhiteSpace(newModel)){
-                                    parc.AddModel(newModel,brandId);
-                                    }
-                                }
-                            break;
-                        case 4:
-                            Console.Clear();
                             Console.WriteLine("quel est l'id de la voiture?");
                             if(int.TryParse(Console.ReadLine(),out int idRentCar)){
                                 parc.LouerVoiture(idRentCar);
                             }
                             break;
-                        case 5:
+                        case 3:
                             Console.Clear();
                             Console.WriteLine("quel est l'id de la voiture?");
                             if(int.TryParse(Console.ReadLine(),out int idRetedCar)){
                                 parc.ArreterLocation(idRetedCar);
                             }
                             break;
-                        case 6:
+                        case 4:
                             Console.Clear();
                             parc.ListCars();
                             Console.ReadKey();
                             break;
-                        case 7:
+                        case 5:
                             Console.Clear();
                             parc.ListBrands();
                             Console.ReadKey();
                             break;
-                        case 8:
+                        case 6:
                             Console.Clear();
                             parc.ListModels();
                             Console.ReadKey();
@@ -104,7 +82,7 @@ namespace Garage
                             break;
 
                     }
-                    if (input==9){
+                    if (input==7){
                         Console.Clear();
                         break;
                     }
