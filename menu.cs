@@ -1,12 +1,12 @@
-using System;
-
 namespace Garage
 {
+    // Classe représentant le menu principal de gestion du garage
     public class Menu
     {
         Parc garage = new Parc();
         CarContainer carDataHandler = new CarContainer();
 
+        // Constructeur : tente de charger les données depuis un fichier
         public Menu()
         {
             try
@@ -16,18 +16,20 @@ namespace Garage
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("Aucun file de sauvegarde trouvé. Une nouvelle base de données sera créée.");
+                // Message si aucun fichier de sauvegarde n'est trouvé
+                Console.WriteLine("Aucun fichier de sauvegarde trouvé. Une nouvelle base de données sera créée.");
             }
         }
-
         public void Print()
         {
             while (true)
             {
+                // Synchronisation des données et sauvegarde dans un fichier
                 carDataHandler.DataSeter(garage.GetList(), garage.GetDictionnary());
                 carDataHandler.SaveToFile("save.txt");
                 Console.Clear();
 
+                // Affiche les options du menu
                 Console.WriteLine("=== GESTION DU GARAGE ===");
                 Console.WriteLine("[1] Ajouter une voiture");
                 Console.WriteLine("[2] Ajouter une marque");
@@ -35,25 +37,26 @@ namespace Garage
                 Console.WriteLine("[4] Louer une voiture");
                 Console.WriteLine("[5] Rendre une voiture");
                 Console.WriteLine("[6] Lister les voitures");
-                Console.WriteLine("[7] Lister les brands");
+                Console.WriteLine("[7] Lister les marques");
                 Console.WriteLine("[8] Lister les modèles");
                 Console.WriteLine("[9] Quitter");
                 Console.WriteLine("==========================");
                 Console.Write("Veuillez choisir une option: ");
 
+                // Lecture et traitement de l'option choisie
                 if (int.TryParse(Console.ReadLine(), out int input))
                 {
                     switch (input)
                     {
-                        case 1: AjouterVoiture(); break;
-                        case 2: AjouterMarque(); break;
-                        case 3: AjouterModele(); break;
-                        case 4: LouerVoiture(); break;
-                        case 5: RendreVoiture(); break;
-                        case 6: ListerVoitures(); break;
-                        case 7: ListerMarques(); break;
-                        case 8: ListerModeles(); break;
-                        case 9: Quitter(); return;
+                        case 1: AddCar(); break;
+                        case 2: AddBrand(); break;
+                        case 3: AddModel(); break;
+                        case 4: RentCar(); break;
+                        case 5: ReturnCar(); break;
+                        case 6: ListCars(); break;
+                        case 7: ListBrands(); break;
+                        case 8: ListModels(); break;
+                        case 9: Quit(); return;
                         default:
                             Console.WriteLine("Option invalide, veuillez réessayer.");
                             Pause();
@@ -68,7 +71,8 @@ namespace Garage
             }
         }
 
-        private void AjouterVoiture()
+        // Méthode pour ajouter une nouvelle voiture
+        private void AddCar()
         {
             Console.Clear();
             Console.WriteLine("=== Ajouter une voiture ===");
@@ -99,7 +103,8 @@ namespace Garage
             }
         }
 
-        private void AjouterMarque()
+        // Méthode pour ajouter une nouvelle marque
+        private void AddBrand()
         {
             Console.Clear();
             Console.WriteLine("=== Ajouter une marque ===");
@@ -119,7 +124,8 @@ namespace Garage
             Pause();
         }
 
-        private void AjouterModele()
+        // Méthode pour ajouter un nouveau modèle
+        private void AddModel()
         {
             Console.Clear();
             Console.WriteLine("=== Ajouter un modèle ===");
@@ -150,7 +156,8 @@ namespace Garage
             Pause();
         }
 
-        private void LouerVoiture()
+        // Méthode pour louer une voiture
+        private void RentCar()
         {
             Console.Clear();
             Console.WriteLine("=== Louer une voiture ===");
@@ -159,15 +166,17 @@ namespace Garage
             Console.Write("Entrez l'ID de la voiture à louer: ");
             if (int.TryParse(Console.ReadLine(), out int idRentCar))
             {
-                garage.LouerVoiture(idRentCar);
+                garage.RentCar(idRentCar);
             }
             else
             {
                 Console.WriteLine("❌ ID invalide.");
             }
             Pause();
-            }
-        private void RendreVoiture()
+        }
+
+        // Méthode pour rendre une voiture
+        private void ReturnCar()
         {
             Console.Clear();
             Console.WriteLine("=== Rendre une voiture ===");
@@ -176,7 +185,7 @@ namespace Garage
             Console.Write("Entrez l'ID de la voiture à rendre: ");
             if (int.TryParse(Console.ReadLine(), out int idReturnedCar))
             {
-                garage.ArreterLocation(idReturnedCar);
+                garage.ReturnCar(idReturnedCar);
             }
             else
             {
@@ -185,7 +194,8 @@ namespace Garage
             Pause();
         }
 
-        private void ListerVoitures()
+        // Méthode pour lister les voitures
+        private void ListCars()
         {
             Console.Clear();
             Console.WriteLine("=== Liste des voitures ===");
@@ -193,15 +203,17 @@ namespace Garage
             Pause();
         }
 
-        private void ListerMarques()
+        // Méthode pour lister les marques
+        private void ListBrands()
         {
             Console.Clear();
-            Console.WriteLine("=== Liste des brands ===");
+            Console.WriteLine("=== Liste des marques ===");
             garage.ListBrands();
             Pause();
         }
 
-        private void ListerModeles()
+        // Méthode pour lister les modèles
+        private void ListModels()
         {
             Console.Clear();
             Console.WriteLine("=== Liste des modèles ===");
@@ -209,7 +221,8 @@ namespace Garage
             Pause();
         }
 
-        private void Quitter()
+        // Méthode pour quitter le programme
+        private void Quit()
         {
             Console.Clear();
             Console.WriteLine("Merci d'avoir utilisé le gestionnaire de garage !");
@@ -217,6 +230,7 @@ namespace Garage
             Console.ReadKey();
         }
 
+        // Méthode pour ajouter une pause dans l'exécution et attendre une entrée utilisateur
         private void Pause()
         {
             Console.WriteLine("\nAppuyez sur une touche pour continuer...");

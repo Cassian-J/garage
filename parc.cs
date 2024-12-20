@@ -1,30 +1,38 @@
 namespace Garage
 {
+    // Classe représentant un parc automobile, gérant les voitures et les marques/modèles associés
     public class Parc
     {
         private List<Car> carList;
         private Dictionary<string, List<string>> brandsModels;
 
+        // Constructeur initialisant les collections pour stocker les données
         public Parc()
         {
             carList = new List<Car>();
             brandsModels = new Dictionary<string, List<string>>();
         }
 
+        // Méthode pour charger les données dans le parc
         public void DataGetter((List<Car> ListCars, Dictionary<string, List<string>> Models) Data)
         {
             carList = Data.ListCars;
             brandsModels = Data.Models;
         }
 
-        public List<Car> GetList() {
+        // Retourne la liste des voitures
+        public List<Car> GetList()
+        {
             return carList;
         }
 
-        public Dictionary<string, List<string>> GetDictionnary() {
+        // Retourne le dictionnaire des marques et modèles
+        public Dictionary<string, List<string>> GetDictionnary()
+        {
             return brandsModels;
         }
 
+        // Ajoute une nouvelle marque au parc
         public void AddBrand(string brandName)
         {
             if (!brandsModels.ContainsKey(brandName))
@@ -38,6 +46,7 @@ namespace Garage
             }
         }
 
+        // Ajoute un modèle à une marque existante
         public void AddModel(string modelName, string brandId)
         {
             if (brandsModels.ContainsKey(brandId))
@@ -58,6 +67,7 @@ namespace Garage
             }
         }
 
+        // Ajoute une voiture au parc si la marque et le modèle existent
         public void AddCars(string brandName, string modelName, int manufactureYear = 0, bool isRented = false)
         {
             if (brandsModels.ContainsKey(brandName) && brandsModels[brandName].Contains(modelName))
@@ -72,6 +82,7 @@ namespace Garage
             }
         }
 
+        // Affiche la liste des voitures du parc
         public void ListCars()
         {
             if (carList.Count == 0)
@@ -80,6 +91,7 @@ namespace Garage
                 return;
             }
 
+            // Trie les voitures par marque et modèle pour un affichage organisé
             var sortedCars = carList.OrderBy(c => c.Brand).ThenBy(c => c.Model).ToList();
 
             Console.WriteLine("{0,-5} {1,-15} {2,-21} {3,-20} {4,-10}", "ID", "Marque", "Modèle", "Année", "Louée");
@@ -93,6 +105,7 @@ namespace Garage
             }
         }
 
+        // Affiche la liste des marques disponibles
         public void ListBrands()
         {
             if (brandsModels.Count == 0)
@@ -104,11 +117,12 @@ namespace Garage
             Console.WriteLine("{0,-15}", "Marque");
             Console.WriteLine(new string('-', 15));
             foreach (var brandEntry in brandsModels)
-{
+            {
                 Console.WriteLine("{0,-15}", brandEntry.Key);
             }
         }
 
+        // Affiche la liste des modèles avec leurs marques associées
         public void ListModels()
         {
             if (brandsModels.Count == 0)
@@ -131,7 +145,8 @@ namespace Garage
             }
         }
 
-        public void LouerVoiture(int carId)
+        // Loue une voiture à partir de son ID
+        public void RentCar(int carId)
         {
             var car = carList.FirstOrDefault(c => c.Id == carId);
             if (car != null)
@@ -152,7 +167,8 @@ namespace Garage
             }
         }
 
-        public void ArreterLocation(int carId)
+        // Retourne une voiture louée en mettant à jour son statut
+        public void ReturnCar(int carId)
         {
             var car = carList.FirstOrDefault(c => c.Id == carId);
             if (car != null)
