@@ -4,9 +4,9 @@ namespace Garage
     {
         public (List<Car> ListCars, Dictionary<string, List<string>> Models) Data;
 
-        public void DataSeter(List<Car> listCars, Dictionary<string, List<string>> models)
+        public void DataSeter(List<Car> listCars, Dictionary<string, List<string>> brandsModels)
         {
-            Data = (listCars, models);
+            Data = (listCars, brandsModels);
         }
 
         public void SaveToFile(string filePath)
@@ -30,10 +30,10 @@ namespace Garage
         public (List<Car>, Dictionary<string, List<string>>) LoadFromFile(string filePath)
         {
             if (!File.Exists(filePath))
-                throw new FileNotFoundException("Le fichier spécifié n'existe pas.");
+                throw new FileNotFoundException("Le file spécifié n'existe pas.");
 
             var listCars = new List<Car>();
-            var models = new Dictionary<string, List<string>>();
+            var brandsModels = new Dictionary<string, List<string>>();
 
             using (var reader = new StreamReader(filePath))
             {
@@ -58,12 +58,12 @@ namespace Garage
                         var parts = line.Split(',');
                         if (parts.Length == 5)
                         {
-                            string brand = parts[0];
-                            string model = parts[1];
-                            int year = int.Parse(parts[2]);
-                            int id = int.Parse(parts[3]);
+                            string brandName = parts[0];
+                            string modelName = parts[1];
+                            int manufactureYear = int.Parse(parts[2]);
+                            int carId = int.Parse(parts[3]);
                             bool isRented = bool.Parse(parts[4]);
-                            listCars.Add(new Car(brand, model, year, id, isRented));
+                            listCars.Add(new Car(brandName, modelName, manufactureYear, carId, isRented));
                         }
                     }
                     else if (readingModels)
@@ -73,13 +73,13 @@ namespace Garage
                         {
                             var key = parts[0];
                             var values = parts[1].Split(',');
-                            models[key] = new List<string>(values);
+                            brandsModels[key] = new List<string>(values);
                         }
                     }
                 }
             }
 
-            Data = (listCars, models);
+            Data = (listCars, brandsModels);
             return Data;
         }
     }

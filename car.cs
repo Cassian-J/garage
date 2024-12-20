@@ -10,13 +10,13 @@ namespace Garage
         public int Year { get; set; }
         public bool IsRented { get; set; }
         
-        public Car(string brand,string model, int year,int id, bool isrented=false)
+        public Car(string brandName,string modelName, int manufactureYear,int carId, bool isrented=false)
         {
             IsRented = isrented;
-            Year = year;
-            Id = id;
-            Brand = brand;
-            Model = model;
+            Year = manufactureYear;
+            Id = carId;
+            Brand = brandName;
+            Model = modelName;
         }
         public override string ToString()
         {

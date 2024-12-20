@@ -1,5 +1,5 @@
 [Cars]
-Toyota,Corolla,2020,1,False
+Toyota,Corolla,2020,1,True
 Toyota,Land Cruiser,2021,2,True
 Toyota,Prado,2022,3,False
 Ford,Mustang,2021,4,True
@@ -49,7 +49,6 @@ Jaguar,XE,2021,47,False
 Jaguar,F-Pace,2022,48,True
 Land Rover,Range Rover,2020,49,False
 Land Rover,Discovery,2021,50,True
-Jaguar,Jaguar XJ,1999,51,False
 [Models]
 Toyota:Sequoia, Tacoma, Tundra, Sienna, Prius
 Ford:Edge, Bronco, Ranger, Expedition, EcoSport
@@ -68,3 +67,4 @@ Mazda:CX-30,MX-3,MX-6,Capella,626
 Porsche:718 Cayman,Panamera,Macan,911 Carrera,Taycan
 Jaguar:F-Pace,Jaguar XJ,Jaguar XE,Jaguar XF
 Land Rover:Discovery Sport,Range Rover Velar,Land Rover Defender,Land Rover Freelander
+ford:,xtope
